@@ -12,21 +12,22 @@ set backspace=indent,eol,start
 
 " number settings 
 set ruler
-" toggles number type using ctrl-n 
+" toggles number type using ctrl-m 
 function! NumberToggle()
-    if(&number == 1)
-        set number!
+    if(&number == &relativenumber)
+        set number
         set relativenumber!
       elseif(&relativenumber==1)
         set relativenumber
         set number
       else
-        set norelativenumber
-        set number                                                  
+        set relativenumber
+        set number!                                    
     endif
 endfunction
 set number
-nnoremap <C-n> :call NumberToggle()<CR>
+set relativenumber
+nnoremap <C-m> :call NumberToggle()<CR>
 
 
 " Look and feel
