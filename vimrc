@@ -1,16 +1,33 @@
 " Vim Config
 " Stuff taken from various online sources and my own research
+execute pathogen#infect()
 
-
-filetype plugin indent on " turn on plugins and indents
+filetyp plugin indent on " turn on plugins and indents
 syntax on " turn on syntax 
 set encoding=utf-8
 set shell=/bin/zsh " set shell
 
+" fix backspace
+set backspace=indent,eol,start
+
 " number settings 
+set ruler
+" toggles number type using ctrl-n 
+function! NumberToggle()
+    if(&number == 1)
+        set number!
+        set relativenumber!
+      elseif(&relativenumber==1)
+        set relativenumber
+        set number
+      else
+        set norelativenumber
+        set number                                                  
+    endif
+endfunction
 set number
-set relativenumber
-set ruler 
+nnoremap <C-n> :call NumberToggle()<CR>
+
 
 " Look and feel
 set t_Co=256
