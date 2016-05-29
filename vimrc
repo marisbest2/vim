@@ -1,11 +1,15 @@
 " Vim Config
 " Stuff taken from various online sources and my own research
 execute pathogen#infect()
+set nocompatible
 
 filetyp plugin indent on " turn on plugins and indents
 syntax on " turn on syntax 
 set encoding=utf-8
 set shell=/bin/zsh " set shell
+
+" set leader to ,
+let mapleader = ","
 
 " fix backspace
 set backspace=indent,eol,start
@@ -46,6 +50,11 @@ map <c-space> ?
 
 
 set showmatch           " highlight matching [{()}]
+set showmode
+set showcmd
+set hidden
+set wildmenu
+set wildmode=list:longest
 
 " matching
 set incsearch           " search as characters are entered
@@ -72,4 +81,26 @@ map <leader>sn ]s
 map <leader>sp [s
 map <leader>sa zg
 map <leader>s? z=
+
+" Use normal regex mode
+nnoremap / /\v
+vnoremap / /\v
+
+" Clear highlights
+nnoremap <leader><space> :noh<cr>
+" Easy jumping 
+nnoremap <tab> %
+vnoremap <tab> %
+
+" Save on focus-out
+au FocusLost * :wa
+
+" Vertical splits
+nnoremap <leader>w <C-w>v<C-w>l
+" Move around with ctrl-hjkl
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
 
